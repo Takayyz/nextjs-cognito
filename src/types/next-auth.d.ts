@@ -1,14 +1,16 @@
 import 'next-auth';
 
 interface UserWithId extends DefaultSession["user"] {
+  idToken?: string;
   id?: string;
+  email: string;
 }
 
 declare module 'next-auth' {
   interface Session {
     idToken?: string;
     accessToken?: string;
-    uesr: UserWithId;
+    // uesr: UserWithId;
     error?: String;
   };
 
@@ -26,8 +28,8 @@ declare module 'next-auth/jwt' {
     idToken?: string;
     accessToken?: string;
     refreshToken?: string;
-    user: UserWithId;
+    // user: UserWithId;
     expiresIn?: number;
-    console?: string;
+    error?: string;
   };
 };
